@@ -1,4 +1,4 @@
-package Tratamentos;
+package Exception;
 
 public class DependenteException extends Exception {
 

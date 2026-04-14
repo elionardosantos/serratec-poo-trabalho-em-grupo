@@ -3,6 +3,7 @@ import java.time.LocalDate;
 public class Funcionario extends Pessoa{
 
     private Double salarioBruto;
+    private Double salarioLiquido;
     private Double descontoInss;
     private Double descontoIr;
 
@@ -10,37 +11,20 @@ public class Funcionario extends Pessoa{
             String nome,
             String cpf,
             LocalDate dataNascimento,
-            Double salarioBruto,
-            Double descontoInss,
-            Double descontoIR
+            Double salarioBruto
     ) {
         super(nome, cpf, dataNascimento);
         this.salarioBruto = salarioBruto;
+    }
+
+    public Funcionario(
+            String nome,
+            String cpf,
+            LocalDate dataNascimento,
+            Double salarioLiquido, Double descontoInss, Double descontoIr) {
+        super(nome, cpf, dataNascimento);
+        this.salarioLiquido = salarioLiquido;
         this.descontoInss = descontoInss;
-        this.descontoIr = descontoIR;
-    }
-
-    public Double getSalarioBruto() {
-        return salarioBruto;
-    }
-
-    public void setSalarioBruto(Double salarioBruto) {
-        this.salarioBruto = salarioBruto;
-    }
-
-    public Double getDescontoInss() {
-        return descontoInss;
-    }
-
-    public void setDescontoInss(Double descontoInss) {
-        this.descontoInss = descontoInss;
-    }
-
-    public Double getDescontoIR() {
-        return descontoIr;
-    }
-
-    public void setDescontoIR(Double descontoIR) {
-        this.descontoIr = descontoIR;
+        this.descontoIr = descontoIr;
     }
 }
