@@ -1,6 +1,7 @@
 package Tratamentos;
 
-public class DependenteException {
+public class DependenteException extends Exception {
+
 
 
 }
