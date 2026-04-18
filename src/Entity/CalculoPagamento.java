@@ -4,6 +4,9 @@ import Interface.CalculoDesconto;
 
 public class CalculoPagamento implements CalculoDesconto {
 
+    public CalculoPagamento() {
+    }
+
     @Override
     public Double calcularInss(Double salarioBruto) {
         // Retorna somente o valor do desconto
@@ -14,12 +17,10 @@ public class CalculoPagamento implements CalculoDesconto {
         double valorDesconto;
 
         if (salarioBruto > 8157.41){
-
             // Acima de R$ 8.157,41 o valor é fixo.
+            //aliquota = 0.14;
 
-            aliquota = 0.14;
-
-            descontoInss = 8157.41 * aliquota;
+            descontoInss = 8157.41 * 0.14;
             valorDesconto = descontoInss;
 
         } else {
@@ -31,17 +32,13 @@ public class CalculoPagamento implements CalculoDesconto {
                 aliquota = 0.09;
                 parcDeduzir = 22.77;
 
-
             } else if (salarioBruto <= 4190.83) {
                 aliquota = 0.12;
-                parcDeduzir = 1016.6;
-
+                parcDeduzir = 106.60;
 
             } else if (salarioBruto <= 8157.41) {
                 aliquota = 0.14;
                 parcDeduzir = 190.42;
-
-
             }
 
             descontoInss = (salarioBruto * aliquota) - parcDeduzir;
@@ -55,23 +52,25 @@ public class CalculoPagamento implements CalculoDesconto {
     public Double calcularIr(Double salarioBruto, int quantDependente) {
         // Retorna somente o valor do desconto
 
+        double salario = salarioBruto - (quantDependente * 189.59) - calcularInss(salarioBruto);
+
         double descontoIr;
         double aliquota;
         double parcDeduzir;
 
-        if (salarioBruto <= 2259.0) {
+        if (salario <= 2259.0) {
             aliquota = 0.0;
             parcDeduzir = 0;
 
-        } else if (salarioBruto <= 2826.65) {
+        } else if (salario <= 2826.65) {
             aliquota = 0.075;
             parcDeduzir = 169.44;
 
-        } else if (salarioBruto <= 3751.05) {
+        } else if (salario <= 3751.05) {
             aliquota = 0.15;
             parcDeduzir = 381.44;
 
-        } else if (salarioBruto <= 4664.68) {
+        } else if (salario <= 4664.68) {
             aliquota = 0.225;
             parcDeduzir = 662.77;
 
@@ -80,16 +79,13 @@ public class CalculoPagamento implements CalculoDesconto {
             parcDeduzir = 896.0;
         }
 
-        descontoIr = ((salarioBruto - (quantDependente * 189.59) - this.calcularInss(salarioBruto)) * aliquota) - parcDeduzir;
+        descontoIr = (salario * aliquota) - parcDeduzir;
 
         if (descontoIr <= 0) {
             return 0.0;
-
         } else {
             return descontoIr;
-
         }
-
     }
 
     @Override
@@ -102,5 +98,4 @@ public class CalculoPagamento implements CalculoDesconto {
 
         return salarioLiquido;
     }
-
 }
