@@ -3,9 +3,9 @@ package Entity;
 import java.time.LocalDate;
 
 public abstract class Pessoa {
-    private String nome;
-    private String cpf;
-    private LocalDate dataNascimento;
+    protected String nome;
+    protected final String cpf;
+    protected final LocalDate dataNascimento;
 
     public Pessoa(String nome, String cpf, LocalDate dataNascimento) {
         this.nome = nome;
@@ -19,21 +19,5 @@ public abstract class Pessoa {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 }

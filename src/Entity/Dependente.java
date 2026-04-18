@@ -12,4 +12,30 @@ public class Dependente extends Pessoa{
         this.parentesco = parentesco;
         this.titular = titular;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n\nDependente:");
+        sb.append("\nNome: ").append(nome);
+        sb.append("\nParentesco: ").append(parentesco);
+        sb.append("\nFuncionario: ").append(titular.getNome());
+        return sb.toString();
+    }
+
+    public String getParentesco() {
+        return parentesco;
+    }
+
+    public void setParentesco(String parentesco) {
+        this.parentesco = parentesco;
+    }
+
+    public Pessoa getTitular() {
+        return titular;
+    }
+
+    public void setTitular(Pessoa titular) {
+        this.titular = titular;
+    }
 }
