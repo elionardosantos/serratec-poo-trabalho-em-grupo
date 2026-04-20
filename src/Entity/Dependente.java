@@ -5,11 +5,13 @@ import java.util.UUID;
 
 public class Dependente extends Pessoa{
 
+    private UUID id;
     private String parentesco;
     private UUID idFuncionario;
 
     public Dependente(String nome, String cpf, LocalDate dataNascimento, String parentesco, UUID idFuncionario) {
         super(nome, cpf, dataNascimento);
+        this.id = UUID.randomUUID();
         this.parentesco = parentesco;
         this.idFuncionario = idFuncionario;
     }
@@ -36,7 +38,15 @@ public class Dependente extends Pessoa{
         return idFuncionario;
     }
 
-    public void setIdFuncionario(UUID idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public String getCpf() {
+        return super.cpf;
+    }
+
+    public LocalDate getDataNascimento () {
+        return super.dataNascimento;
+    }
+
+    public UUID getId() {
+        return this.id;
     }
 }

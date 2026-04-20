@@ -19,42 +19,22 @@ public class DependenteDAO {
         this.connection = connection;
     }
 
-    public void inserir(Dependente dependente, int idFuncionario){
+    public void inserir(Dependente dependente) {
 
-        String sql = "INSERT INTO dependente (nome, cpf, data_nasc, parentesco, titular) VALUES (?, ?, ?, ?, ?)";
-
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, dependente.getNome());
-            stmt.setString(2, dependente.getCpf());
-            stmt.setDate(3, Date.valueOf(dependente.getDataNascimento()));
-            stmt.setString(4, dependente.getParentesco());
-            stmt.setInt(5, idFuncionario);
-            stmt.execute();
-            System.out.println("Usuário cadastrado com sucesso");
-        } catch (SQLException exception) {
-            System.out.println("Erro ao inserir usuário no banco de dados: " + exception.getMessage());
-        }
-    }
-
-    public void inserir(Dependente dependente, Funcionario funcionario){
-
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO(this.connection);
-
-        String sql = "INSERT INTO dependente (nome, cpf, data_nasc, parentesco, titular) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO dependente (id_dependente, nome, cpf, data_nasc, parentesco, titular) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, dependente.getNome());
-            stmt.setString(2, dependente.getCpf());
-            stmt.setDate(3, Date.valueOf(dependente.getDataNascimento()));
-            stmt.setString(4, dependente.getParentesco());
-            stmt.setInt(5, funcionarioDAO.consultaId(funcionario));
+            stmt.setObject(1, dependente.getId());
+            stmt.setString(2, dependente.getNome());
+            stmt.setString(3, dependente.getCpf());
+            stmt.setDate(4, Date.valueOf(dependente.getDataNascimento()));
+            stmt.setString(5, dependente.getParentesco());
+            stmt.setObject(6, dependente.getIdFuncionario());
             stmt.execute();
-            System.out.println("Usuário cadastrado com sucesso");
+            System.out.println("Dependente cadastrado no banco de dados com sucesso");
         } catch (SQLException exception) {
-            System.out.println("Erro ao inserir usuário no banco de dados: " + exception.getMessage());
+            System.out.println("Erro ao cadastrar dependente no banco de dados: " + exception.getMessage());
         }
     }
-
 }
