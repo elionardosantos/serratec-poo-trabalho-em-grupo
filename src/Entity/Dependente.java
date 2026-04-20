@@ -29,4 +29,20 @@ public class Dependente extends Pessoa{
         sb.append("\nFuncionario: ").append(idFuncionario);
         return sb.toString();
     }
+
+    public String getParentesco() {
+        return parentesco;
+    }
+
+    public void setParentesco(String parentesco) {
+        this.parentesco = parentesco;
+    }
+
+    public UUID getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(UUID idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
 }

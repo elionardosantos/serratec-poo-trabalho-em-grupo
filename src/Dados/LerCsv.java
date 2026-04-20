@@ -63,7 +63,7 @@ public class LerCsv {
                                 dado[1].trim(),
                                 LocalDate.parse(dado[2].trim()),
                                 dado[3].trim(),
-                                funcionarioAtual);
+                                funcionarioAtual.getId());
 
                         dependentes.add(dependente);
                         funcionarioAtual.addDependente(dependente);
