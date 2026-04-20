@@ -1,16 +1,17 @@
 package Entity;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Dependente extends Pessoa{
 
     private String parentesco;
-    private Pessoa titular;
+    private UUID idFuncionario;
 
-    public Dependente(String nome, String cpf, LocalDate dataNascimento, String parentesco, Pessoa titular) {
+    public Dependente(String nome, String cpf, LocalDate dataNascimento, String parentesco, UUID idFuncionario) {
         super(nome, cpf, dataNascimento);
         this.parentesco = parentesco;
-        this.titular = titular;
+        this.idFuncionario = idFuncionario;
     }
 
     @Override
@@ -19,7 +20,7 @@ public class Dependente extends Pessoa{
         sb.append("\n\nDependente:");
         sb.append("\nNome: ").append(nome);
         sb.append("\nParentesco: ").append(parentesco);
-        sb.append("\nFuncionario: ").append(titular.getNome());
+        sb.append("\nFuncionario: ").append(idFuncionario);
         return sb.toString();
     }
 
@@ -31,11 +32,11 @@ public class Dependente extends Pessoa{
         this.parentesco = parentesco;
     }
 
-    public Pessoa getTitular() {
-        return titular;
+    public UUID getIdFuncionario() {
+        return idFuncionario;
     }
 
-    public void setTitular(Pessoa titular) {
-        this.titular = titular;
+    public void setIdFuncionario(UUID idFuncionario) {
+        this.idFuncionario = idFuncionario;
     }
 }

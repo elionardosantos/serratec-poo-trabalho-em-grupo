@@ -3,9 +3,11 @@ package Entity;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Funcionario extends Pessoa{
 
+    private UUID id;
     private Double salarioBruto;
     private Double salarioLiquido;
     private Double descontoInss;
@@ -14,6 +16,7 @@ public class Funcionario extends Pessoa{
 
     public Funcionario(String nome, String cpf, LocalDate dataNascimento, Double salarioBruto) {
         super(nome, cpf, dataNascimento);
+        this.id = UUID.randomUUID();
         this.salarioBruto = salarioBruto;
         this.dependentes = new ArrayList<>();
     }
@@ -67,5 +70,9 @@ public class Funcionario extends Pessoa{
 
     public Double getDescontoIr() {
         return descontoIr;
+    }
+
+    public UUID getId() {
+        return id;
     }
 }
