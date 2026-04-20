@@ -20,9 +20,9 @@ public class ConnectionFactory {
     public Connection getConnection() {
         try {
             this.connection = DriverManager.getConnection(this.url, this.user, this.password);
-            System.out.println("Conectado ao banco de dados...");
+            System.out.println("Conectado ao banco de dados com sucesso...");
         } catch (SQLException exception) {
-            System.out.println("Erro na conexão: " + exception.getMessage());
+            System.out.println("Erro na conexão com o banco de dados: " + exception.getMessage());
         }
         return this.connection;
     }
