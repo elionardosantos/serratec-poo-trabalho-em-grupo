@@ -1,35 +1,32 @@
 package Entity;
 
 import Exception.DependenteException;
-import Enum.ParentescosEnum;
-
 import java.time.LocalDate;
-import java.time.Period;
+import java.util.UUID;
 
-public class Dependente extends Pessoa {
+public class Dependente extends Pessoa{
 
-    private ParentescosEnum parentesco;
-    private Funcionario titular;
+    private String parentesco;
+    private UUID idFuncionario;
 
-    public Dependente(
-            String nome,
-            String cpf,
-            LocalDate dataNascimento,
-            ParentescosEnum parentesco,
-            Funcionario titular
-    ) {
+    public Dependente(String nome, String cpf, LocalDate dataNascimento, String parentesco, UUID idFuncionario) {
         super(nome, cpf, dataNascimento);
+        this.parentesco = parentesco;
+        this.idFuncionario = idFuncionario;
 
-        int idade = Period.between(dataNascimento, LocalDate.now()).getYears();
-        if (idade >= 18) {
+        int idade = LocalDate.now().getYear() - dataNascimento.getYear();
+        if (idade > 18) {
             throw new DependenteException("ERRO!!! Dependente não pode ser maior de 18 anos");
         }
-
-        this.parentesco = parentesco;
-        this.titular = titular;
     }
 
-    public ParentescosEnum getParentesco() {
-        return parentesco;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n\nDependente:");
+        sb.append("\nNome: ").append(nome);
+        sb.append("\nParentesco: ").append(parentesco);
+        sb.append("\nFuncionario: ").append(idFuncionario);
+        return sb.toString();
     }
 }
