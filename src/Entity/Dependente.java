@@ -1,5 +1,6 @@
 package Entity;
 
+import Exception.DependenteException;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -12,6 +13,11 @@ public class Dependente extends Pessoa{
         super(nome, cpf, dataNascimento);
         this.parentesco = parentesco;
         this.idFuncionario = idFuncionario;
+
+        int idade = LocalDate.now().getYear() - dataNascimento.getYear();
+        if (idade > 18) {
+            throw new DependenteException("ERRO!!! Dependente não pode ser maior de 18 anos");
+        }
     }
 
     @Override

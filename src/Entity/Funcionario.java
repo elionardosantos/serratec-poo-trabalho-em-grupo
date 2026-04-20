@@ -1,11 +1,12 @@
 package Entity;
 
+import Exception.DependenteException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Funcionario extends Pessoa{
+public class Funcionario extends Pessoa {
 
     private UUID id;
     private Double salarioBruto;
@@ -28,13 +29,20 @@ public class Funcionario extends Pessoa{
         this.descontoIr = descontoIr;
     }
 
-    public void addDependente(Dependente dependente){
+    private Set<String> cpfsDependentes = new HashSet<>();
+
+    public void addDependente(Dependente dependente) {
+
+        if (cpfsDependentes.contains(dependente.getCpf())) {
+            throw new DependenteException("ERRO!!! o CPF de dependente já cadastrado para este funcionário");
+        }
         this.dependentes.add(dependente);
+        cpfsDependentes.add(dependente.getCpf());
     }
 
-    public void calculoGeral(){
+    public void calculoGeral() {
         CalculoPagamento calculoPagamento = new CalculoPagamento();
-        this.descontoInss =  calculoPagamento.calcularInss(salarioBruto);
+        this.descontoInss = calculoPagamento.calcularInss(salarioBruto);
         this.descontoIr = calculoPagamento.calcularIr(salarioBruto, dependentes.size());
         this.salarioLiquido = calculoPagamento.calcSalarioLiquido(salarioBruto, dependentes.size());
     }
@@ -46,10 +54,10 @@ public class Funcionario extends Pessoa{
         sb.append("\nNome: ").append(nome);
         sb.append("\nCpf: ").append(cpf);
         sb.append("\nDataNascimento: ").append(dataNascimento);
-        sb.append("\nSalario: R$ ").append(String.format("%.2f",(salarioBruto)));
-        sb.append("\nDesconto do INSS: R$ ").append(String.format("%.2f",(descontoInss)));
-        sb.append("\nDesconto do IR: R$ ").append(String.format("%.2f",(descontoIr)));
-        sb.append("\nSalario Liquido: R$ ").append(String.format("%.2f",(salarioLiquido)));
+        sb.append("\nSalario: R$ ").append(String.format("%.2f", (salarioBruto)));
+        sb.append("\nDesconto do INSS: R$ ").append(String.format("%.2f", (descontoInss)));
+        sb.append("\nDesconto do IR: R$ ").append(String.format("%.2f", (descontoIr)));
+        sb.append("\nSalario Liquido: R$ ").append(String.format("%.2f", (salarioLiquido)));
         for (Dependente d : dependentes) {
             sb.append(d);
         }
