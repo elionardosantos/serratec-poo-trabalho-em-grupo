@@ -83,4 +83,12 @@ public class Funcionario extends Pessoa {
     public UUID getId() {
         return id;
     }
+
+    public String getCpf() {
+        return super.cpf;
+    }
+
+    public LocalDate getDataNascimento() {
+        return super.dataNascimento;
+    }
 }

@@ -1,11 +1,15 @@
 package Dados;
 
+import DAO.ConnectionFactory;
+import DAO.DependenteDAO;
+import DAO.FuncionarioDAO;
 import Entity.Dependente;
 import Entity.Funcionario;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +23,16 @@ public class LerCsv {
     }
 
     public List<Funcionario> lerDados() {
+
+//        ConnectionFactory factory = new ConnectionFactory(
+//                "jdbc:postgresql://localhost:5432/folhaPagamento",
+//                "postgres",
+//                "admin"
+//        );
+//
+//        Connection connection = factory.getConnection();
+//        FuncionarioDAO funcionarioDAO = new FuncionarioDAO(connection);
+//        DependenteDAO dependenteDAO = new DependenteDAO(connection);
 
         List<Funcionario> funcionarios = new ArrayList<>();
         List<Dependente> dependentes = new ArrayList<>();
@@ -48,6 +62,7 @@ public class LerCsv {
                         funcionarios.add(funcionario);
                         funcionarioAtual = funcionario;
 
+//                        funcionarioDAO.inserir(funcionarioAtual);
                     } catch (Exception e) {
                         System.err.println("Erro " + e.getMessage());
                     }
@@ -67,6 +82,8 @@ public class LerCsv {
 
                         dependentes.add(dependente);
                         funcionarioAtual.addDependente(dependente);
+
+//                        dependenteDAO.inserir(dependente);
 
                     } catch (Exception e) {
                         throw new RuntimeException(e);
