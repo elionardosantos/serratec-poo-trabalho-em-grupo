@@ -22,6 +22,13 @@ public class Dependente extends Pessoa{
         }
     }
 
+    public Dependente(UUID id, String nome, String cpf, LocalDate dataNascimento, String parentesco, UUID idFuncionario) {
+        super(nome, cpf, dataNascimento);
+        this.id = id;
+        this.parentesco = parentesco;
+        this.idFuncionario = idFuncionario;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
