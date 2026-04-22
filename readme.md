@@ -115,7 +115,7 @@
          Raquel;01256567450;20000628;9000.00
          Bruno;00011122235;20190301;FILHO
 
-#Formato do Arquivo de Saida (CSV)
+# Formato do Arquivo de Saida (CSV)
 
          Nome_Funcionario;CPF;Desconto_INSS;Desconto_IR;Salario_Liquido
          
