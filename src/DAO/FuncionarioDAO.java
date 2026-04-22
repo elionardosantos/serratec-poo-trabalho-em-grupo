@@ -4,6 +4,9 @@ import Entity.Funcionario;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Instanciar um objeto ConnectionFactory e obter a conexão através do método getConnection()
@@ -36,31 +39,29 @@ public class FuncionarioDAO {
 
     }
 
-    public int consultaId(Funcionario funcionario) {
+    public List<Funcionario> listarTodos() {
 
-        int funcionarioId = 0;
-        String sql = "SELECT id_funcionario FROM funcionario WHERE cpf = ?";
+        String sql = "SELECT * FROM funcionario";
+        List<Funcionario> funcionarios = new ArrayList<>();
 
-        try (connection) {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, funcionario.getCpf());
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet resultSet = stmt.executeQuery();
 
-            try (ResultSet resultSet = stmt.executeQuery()){
+            while (resultSet.next()) {
+                Funcionario funcionario = new Funcionario(
+                        (UUID) resultSet.getObject("id_funcionario"),
+                        resultSet.getString("nome"),
+                        resultSet.getString("cpf"),
+                        LocalDate.parse(resultSet.getDate("data_nasc").toString()),
+                        resultSet.getDouble("salario_bruto")
+                );
 
-                while (resultSet.next()){
-                    funcionarioId = resultSet.getInt("id_funcionario");
-                }
-
-            } catch (SQLException exception) {
-                System.out.println("Houve um erro ao consultar o ID do funcionario");
+                funcionarios.add(funcionario);
             }
 
         } catch (SQLException exception) {
-            System.out.println("Houve um erro ao consultar o ID do funcionario");
-
+            System.out.println("Houve um erro ao consultar os funcionários no banco de dados: " + exception.getMessage());
         }
-
-        return funcionarioId;
+        return funcionarios;
     }
-
 }

@@ -21,6 +21,13 @@ public class Funcionario extends Pessoa{
         this.dependentes = new ArrayList<>();
     }
 
+    public Funcionario(UUID id, String nome, String cpf, LocalDate dataNascimento, Double salarioBruto) {
+        super(nome, cpf, dataNascimento);
+        this.id = id;
+        this.salarioBruto = salarioBruto;
+        this.dependentes = new ArrayList<>();
+    }
+
     public Funcionario(String nome, String cpf, LocalDate dataNascimento, Double salarioLiquido, Double descontoInss, Double descontoIr) {
         super(nome, cpf, dataNascimento);
         this.salarioLiquido = salarioLiquido;
@@ -42,7 +49,7 @@ public class Funcionario extends Pessoa{
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Funcionario:");
+        sb.append("\nFuncionario: ");
         sb.append("\nNome: ").append(nome);
         sb.append("\nCpf: ").append(cpf);
         sb.append("\nDataNascimento: ").append(dataNascimento);
