@@ -1,15 +1,14 @@
 # Trabalho Final de POO em Grupo
-================================================================================================================================================================================
-   Elionardo      -> Banco de Dados
-   Igor           -> Tratamento com o arquivo CSV (Analise e leitura)
-   Gabriel        -> Exceçoes e Folha pagamento
-   Joao Vitor     -> Main
-   Joao Salgueiro -> README
-================================================================================================================================================================================
+         Elionardo      -> Banco de Dados
+         Igor           -> Tratamento com o arquivo CSV (Analise e leitura)
+         Gabriel        -> Exceçoes e Folha pagamento
+         Joao Vitor     -> Main
+         Joao Salgueiro -> README
+
 # Sobre o programa 
   
-Sistema desenvolvido em Java para calcular o salário líquido de funcionários de uma empresa, aplicando descontos de INSS e Imposto de Renda (IR) conforme as tabelas vigentes. O programa lê os dados de um arquivo CSV de entrada e gera um arquivo CSV de saída com os resultados calculados.
-================================================================================================================================================================================
+      Sistema desenvolvido em Java para calcular o salário líquido de funcionários de uma empresa, aplicando descontos de INSS e Imposto de Renda (IR) conforme as tabelas vigentes. O programa lê os dados de um arquivo CSV de entrada e gera um arquivo CSV de saída com         os resultados calculados.
+
 # Estrutura de Pacotes
 
 src/
@@ -31,7 +30,7 @@ src/
 └── Interface/
     └── ICalculoSalario.java
 
-================================================================================================================================================================================
+
 # Funcionalidades  
 
 Leitura de arquivo CSV de entrada com dados de funcionários e dependentes
@@ -48,7 +47,7 @@ Geração de arquivo CSV de saída com os dados da folha de pagamento
 
 Inserção dos dados em banco de dados (tabelas: funcionário, dependente, folha de pagamento)
 
-================================================================================================================================================================================
+
 # Regras de Negocio
 
 Cálculo do INSS (Tabela a partir de 01/2025)
@@ -95,7 +94,7 @@ Salário Líquido
 
 Fórmula: Salário_Líquido = Salário_Bruto − C_INSS − C_IR
 
-================================================================================================================================================================================
+
 # Formato do Arquivo de Entrada (CSV)
 
 Campos separados por ; Cada grupo de funcionário e seus dependentes é separado por uma linha em branco.
@@ -114,7 +113,6 @@ Joana;09876543201;20171001;FILHO
 Raquel;01256567450;20000628;9000.00
 Bruno;00011122235;20190301;FILHO
 
-================================================================================================================================================================================
 #Formato do Arquivo de Saida (CSV)
 
 Nome_Funcionario;CPF;Desconto_INSS;Desconto_IR;Salario_Liquido
@@ -123,7 +121,7 @@ Exemplo:
 Raquel;01256567450;751.98;1346.71;6901.31
 Maria dos Santos;01234567890;341.28;65.67;3093.05
 
-================================================================================================================================================================================
+
 # Como Executar
 
 1. Clone o repositório: git clone https://github.com/elionardosantos/serratec-poo-trabalho-em-grupo.git
@@ -131,7 +129,7 @@ Maria dos Santos;01234567890;341.28;65.67;3093.05
 3. Execute a classe EntradaDados
 4. Informe via console o nome do arquivo de entrada e de saída
 
-================================================================================================================================================================================
+
 # Tecnologias
 
 Java 17+
