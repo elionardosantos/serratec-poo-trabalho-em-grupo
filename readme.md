@@ -7,7 +7,9 @@
 
 # Sobre o programa 
   
-      Sistema desenvolvido em Java para calcular o salário líquido de funcionários de uma empresa, aplicando descontos de INSS e Imposto de Renda (IR) conforme as tabelas vigentes. O programa lê os dados de um arquivo CSV de entrada e gera um arquivo CSV de saída com         os resultados calculados.
+      Sistema desenvolvido em Java para calcular o salário líquido de funcionários de uma empresa, 
+      aplicando descontos de INSS e Imposto de Renda (IR) conforme as tabelas vigentes. 
+      O programa lê os dados de um arquivo CSV de entrada e gera um arquivo CSV de saída comos resultados calculados.
 
 # Estrutura de Pacotes
 
