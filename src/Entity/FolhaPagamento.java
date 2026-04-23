@@ -32,5 +32,29 @@ public class FolhaPagamento {
         sb.append("\nSalário Líquido: R$ ").append(String.format("%.2f", salarioLiquido));
         return sb.toString();
     }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public LocalDate getDataPagamento() {
+        return dataPagamento;
+    }
+
+    public double getDescontoINSS() {
+        return descontoINSS;
+    }
+
+    public double getDescontoIR() {
+        return descontoIR;
+    }
+
+    public double getSalarioLiquido() {
+        return salarioLiquido;
+    }
 }
 

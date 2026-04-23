@@ -2,9 +2,7 @@ package Entity;
 
 import Exception.DependenteException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class Funcionario extends Pessoa {
 
