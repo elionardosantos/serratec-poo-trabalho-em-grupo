@@ -3,7 +3,14 @@ package DAO;
 import Entity.Funcionario;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
+/**
+ * Instanciar um objeto ConnectionFactory e obter a conexão através do método getConnection()
+ */
 public class FuncionarioDAO {
 
     private final Connection connection;
@@ -12,18 +19,49 @@ public class FuncionarioDAO {
         this.connection = connection;
     }
 
-    public void inserir(Funcionario funcionario) {
+    public void inserir(Funcionario funcionario){
+
         String sql = "INSERT INTO funcionario (id_funcionario, nome, cpf, data_nasc, salario_bruto) VALUES (?, ?, ?, ?, ?)";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+        try(PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setObject(1, funcionario.getId());
             stmt.setString(2, funcionario.getNome());
             stmt.setString(3, funcionario.getCpf());
             stmt.setDate(4, Date.valueOf(funcionario.getDataNascimento()));
             stmt.setDouble(5, funcionario.getSalarioBruto());
             stmt.execute();
-            System.out.println("Funcionário cadastrado com sucesso");
-        } catch (SQLException e) {
-            System.out.println("Erro ao cadastrar funcionário: " + e.getMessage());
+            System.out.println("Funcionário cadastrado no banco de dados com sucesso");
+
+        } catch (SQLException exception) {
+            System.out.println("Erro ao cadastrar funcionário no banco de dados: " + exception.getMessage());
+
         }
+
+    }
+
+    public List<Funcionario> listarTodos() {
+
+        String sql = "SELECT * FROM funcionario";
+        List<Funcionario> funcionarios = new ArrayList<>();
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()) {
+                Funcionario funcionario = new Funcionario(
+                        (UUID) resultSet.getObject("id_funcionario"),
+                        resultSet.getString("nome"),
+                        resultSet.getString("cpf"),
+                        LocalDate.parse(resultSet.getDate("data_nasc").toString()),
+                        resultSet.getDouble("salario_bruto")
+                );
+
+                funcionarios.add(funcionario);
+            }
+
+        } catch (SQLException exception) {
+            System.out.println("Houve um erro ao consultar os funcionários no banco de dados: " + exception.getMessage());
+        }
+        return funcionarios;
     }
 }
