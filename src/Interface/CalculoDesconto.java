@@ -1,9 +1,7 @@
 package Interface;
 
 public interface CalculoDesconto {
-
-     Double calcularInss(Double salarioBruto);
-     Double calcularIr(Double salarioBruto, int quantDependente);
-     Double calcSalarioLiquido(double salarioBruto, int quantDependente);
-
+     public Double calcularInss(Double salarioBruto);
+     public Double calcularIr(Double salarioBruto, int quantDependente);
+     public Double calcSalarioLiquido(double salarioBruto, int quantDependente);
 }

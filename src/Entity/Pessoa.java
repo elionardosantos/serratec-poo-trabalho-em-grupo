@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public abstract class Pessoa {
     protected String nome;
-    protected final String cpf;
-    protected final LocalDate dataNascimento;
+    protected String cpf;
+    protected LocalDate dataNascimento;
 
     public Pessoa(String nome, String cpf, LocalDate dataNascimento) {
         this.nome = nome;
@@ -13,11 +13,10 @@ public abstract class Pessoa {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
+    public LocalDate getDataNascimento() { return dataNascimento; }
+    public void setDataNascimento(LocalDate dataNascimento) { this.dataNascimento = dataNascimento; }
 }
