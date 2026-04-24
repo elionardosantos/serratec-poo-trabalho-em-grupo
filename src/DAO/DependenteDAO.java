@@ -35,10 +35,9 @@ public class DependenteDAO {
             stmt.execute();
             System.out.println("Dependente "+dependente.getNome()+" cadastrado no banco de dados com sucesso");
         } catch (SQLException exception) {
-            System.out.println("Erro ao cadastrar dependente no banco de dados: " + exception.getMessage());
+            System.err.println("Erro ao cadastrar dependente no banco de dados: " + exception.getMessage());
         }
     }
-
 
     public List<Dependente> listarTodos() {
 
@@ -62,7 +61,7 @@ public class DependenteDAO {
             }
 
         } catch (SQLException exception) {
-            System.out.println("Houve um erro ao consultar os dependentes no banco de dados: " + exception.getMessage());
+            System.err.println("Houve um erro ao consultar os dependentes no banco de dados: " + exception.getMessage());
         }
         return dependentes;
     }

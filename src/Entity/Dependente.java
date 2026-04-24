@@ -43,10 +43,6 @@ public class Dependente extends Pessoa{
         return parentesco;
     }
 
-    public void setParentesco(String parentesco) {
-        this.parentesco = parentesco;
-    }
-
     public UUID getIdFuncionario() {
         return idFuncionario;
     }
