@@ -1,7 +1,7 @@
 # Trabalho Final de POO em Grupo
          Elionardo      -> Banco de Dados
-         Igor           -> Tratamento com o arquivo CSV (Analise e leitura)
-         Gabriel        -> Exceçoes e Folha pagamento
+         Igor           -> Tratamento com o arquivo CSV (Analise e leitura) e folha de pagamento
+         Gabriel        -> tratar Exceçoes e erros de mais de 18 e cpf repetido
          Joao Vitor     -> Main
          Joao Salgueiro -> README
 
