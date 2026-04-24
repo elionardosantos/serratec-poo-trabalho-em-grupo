@@ -1,8 +1,11 @@
 package Entity;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class FolhaPagamento {
+
+    private UUID id;
     private int codigo;
     private Funcionario funcionario;
     private LocalDate dataPagamento;
@@ -11,6 +14,17 @@ public class FolhaPagamento {
     private double salarioLiquido;
 
     public FolhaPagamento(int codigo, Funcionario funcionario, LocalDate dataPagamento, double descontoINSS, double descontoIR, double salarioLiquido) {
+        this.id = UUID.randomUUID();
+        this.codigo = codigo;
+        this.funcionario = funcionario;
+        this.dataPagamento = dataPagamento;
+        this.descontoINSS = descontoINSS;
+        this.descontoIR = descontoIR;
+        this.salarioLiquido = salarioLiquido;
+    }
+
+    public FolhaPagamento(UUID id, int codigo, Funcionario funcionario, LocalDate dataPagamento, double descontoINSS, double descontoIR, double salarioLiquido) {
+        this.id = id;
         this.codigo = codigo;
         this.funcionario = funcionario;
         this.dataPagamento = dataPagamento;
@@ -55,6 +69,10 @@ public class FolhaPagamento {
 
     public double getSalarioLiquido() {
         return salarioLiquido;
+    }
+
+    public UUID getId() {
+        return id;
     }
 }
 

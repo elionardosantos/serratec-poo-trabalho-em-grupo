@@ -1,30 +1,58 @@
+import DAO.ConnectionFactory;
+import DAO.FolhaPagamentoDAO;
 import Dados.Arquivos;
 import Dados.EscreverCsv;
 import Dados.LerCsv;
 import Entity.FolhaPagamento;
 import Entity.Funcionario;
 
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Caminho atual: " + System.getProperty("user.dir"));
+//        System.out.println("Caminho atual: " + System.getProperty("user.dir"));
 
-        String caminho = System.getProperty("user.dir") + "/src/Dados";
+        ConnectionFactory factory = new ConnectionFactory(
+                "jdbc:postgresql://localhost:5432/folha_pagamento",
+                "postgres",
+                "admin"
+        );
+        Connection connection = factory.getConnection();
+        FolhaPagamentoDAO folhaPagamentoDAO = new FolhaPagamentoDAO(connection);
 
-        System.out.println("=== Selecione o arquivo de ENTRADA ===");
-        String arquivoEntrada = Arquivos.listar(caminho);
+        Scanner sc = new Scanner(System.in);
+        String caminho = System.getProperty("user.dir") + "/src/CSV";
+        String arquivoEntrada;
+        List<Funcionario> funcionarios = null;
 
-        if (arquivoEntrada == null) {
-            System.out.println("Nenhum arquivo selecionado. Encerrando.");
-            return;
-        }
+        do {
+            System.out.println("\n=== Selecione o arquivo de ENTRADA ===");
+            arquivoEntrada = Arquivos.listar(caminho);
 
-        LerCsv ler = new LerCsv(arquivoEntrada);
-        List<Funcionario> funcionarios = ler.lerDados();
+            if (arquivoEntrada == null) {
+                System.out.println("\nNenhum arquivo selecionado. Tente novamente.");
+
+            } else {
+                LerCsv ler = new LerCsv(arquivoEntrada);
+                funcionarios = ler.lerDados();
+
+                if (funcionarios.isEmpty()) {
+                    System.out.println(
+                            "O arquivo não possui dados ou não está no formato correto" +
+                            "\nTente outro arquivo."
+                    );
+                    funcionarios = null;
+
+                }
+
+            }
+
+        } while (funcionarios == null);
 
         List<FolhaPagamento> folhas = new ArrayList<>();
         int codigo = 1;
@@ -45,7 +73,13 @@ public class Main {
             System.out.println(folha);
         }
 
-        String arquivoSaida = System.getProperty("user.dir") + "/src/Dados/saida.csv";
+        System.out.println(); // Espaçamento
+        folhas.forEach(folhaPagamentoDAO::inserir);
+
+        System.out.print("\nDigite um nome para o arquivo de saída:\n-> ");
+        String nomeArquivoSaida = sc.nextLine();
+
+        String arquivoSaida = System.getProperty("user.dir") + "/src/CSV/"+nomeArquivoSaida+"_saida.csv";
         EscreverCsv escrever = new EscreverCsv(arquivoSaida);
         escrever.escreverDados(folhas);
 
