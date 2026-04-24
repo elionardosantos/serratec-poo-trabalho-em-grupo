@@ -18,7 +18,7 @@ public class EscreverCsv {
     public void escreverDados(List<FolhaPagamento> folhas) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(atalho))) {
             for (FolhaPagamento folha : folhas) {
-                bw.write(folha.toString());
+                bw.write(folha.toCsv());
                 bw.newLine();
             }
         } catch (IOException e) {

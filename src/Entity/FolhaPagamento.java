@@ -47,6 +47,16 @@ public class FolhaPagamento {
         return sb.toString();
     }
 
+    public String toCsv(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(funcionario.getNome()).append(";");
+        sb.append(funcionario.cpf).append(";");
+        sb.append(String.format("%.2f", descontoINSS)).append(";");
+        sb.append(String.format("%.2f", descontoIR)).append(";");
+        sb.append(String.format("%.2f", salarioLiquido));
+        return sb.toString();
+    }
+
     public int getCodigo() {
         return codigo;
     }

@@ -23,16 +23,6 @@ public class LerCsv {
     }
 
     public List<Funcionario> lerDados() {
-
-        ConnectionFactory factory = new ConnectionFactory(
-                "jdbc:postgresql://localhost:5432/folha_pagamento",
-                "postgres",
-                "admin"
-        );
-        Connection connection = factory.getConnection();
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO(connection);
-        DependenteDAO dependenteDAO = new DependenteDAO(connection);
-
         List<Funcionario> funcionarios = new ArrayList<>();
         List<Dependente> dependentes = new ArrayList<>();
         Funcionario funcionarioAtual = null;
@@ -61,7 +51,6 @@ public class LerCsv {
                         funcionarios.add(funcionario);
                         funcionarioAtual = funcionario;
 
-                        funcionarioDAO.inserir(funcionarioAtual);
                     } catch (Exception e) {
                         System.err.println("Erro " + e.getMessage());
                     }
@@ -82,8 +71,6 @@ public class LerCsv {
                         dependentes.add(dependente);
                         funcionarioAtual.addDependente(dependente);
 
-                        dependenteDAO.inserir(dependente);
-
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -91,6 +78,19 @@ public class LerCsv {
             }
             for (Funcionario funcionario : funcionarios) {
                 funcionario.calculoGeral();
+            }
+
+            if (!funcionarios.isEmpty()) {
+                ConnectionFactory factory = new ConnectionFactory(
+                        "jdbc:postgresql://localhost:5432/folhadepagamento",
+                        "postgres",
+                        "1212"
+                );
+                Connection connection = factory.getConnection();
+                FuncionarioDAO funcionarioDAO = new FuncionarioDAO(connection);
+                DependenteDAO dependenteDAO = new DependenteDAO(connection);
+                funcionarios.forEach(funcionarioDAO::inserir);
+                dependentes.forEach(dependenteDAO::inserir);
             }
             return funcionarios;
 

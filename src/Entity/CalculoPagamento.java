@@ -9,7 +9,6 @@ public class CalculoPagamento implements CalculoDesconto {
 
     @Override
     public Double calcularInss(Double salarioBruto) {
-        // Retorna somente o valor do desconto
 
         double descontoInss;
         double aliquota = 0.0;
@@ -17,8 +16,6 @@ public class CalculoPagamento implements CalculoDesconto {
         double valorDesconto;
 
         if (salarioBruto > 8157.41){
-            // Acima de R$ 8.157,41 o valor é fixo.
-            //aliquota = 0.14;
 
             descontoInss = 8157.41 * 0.14;
             valorDesconto = descontoInss;
@@ -50,7 +47,6 @@ public class CalculoPagamento implements CalculoDesconto {
 
     @Override
     public Double calcularIr(Double salarioBruto, int quantDependente) {
-        // Retorna somente o valor do desconto
 
         double salario = salarioBruto - (quantDependente * 189.59) - calcularInss(salarioBruto);
 
@@ -90,7 +86,6 @@ public class CalculoPagamento implements CalculoDesconto {
 
     @Override
     public Double calcSalarioLiquido(double salarioBruto, int quantDependente) {
-        // Retorna salário bruto - INSS - IR
 
         double salarioLiquido;
 

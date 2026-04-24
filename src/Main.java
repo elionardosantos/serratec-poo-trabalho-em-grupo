@@ -15,12 +15,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-//        System.out.println("Caminho atual: " + System.getProperty("user.dir"));
-
         ConnectionFactory factory = new ConnectionFactory(
-                "jdbc:postgresql://localhost:5432/folha_pagamento",
+                "jdbc:postgresql://localhost:5432/folhadepagamento",
                 "postgres",
-                "admin"
+                "1212"
         );
         Connection connection = factory.getConnection();
         FolhaPagamentoDAO folhaPagamentoDAO = new FolhaPagamentoDAO(connection);

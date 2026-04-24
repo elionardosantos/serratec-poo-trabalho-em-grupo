@@ -36,32 +36,5 @@ public class FuncionarioDAO {
             System.out.println("Erro ao cadastrar funcionário no banco de dados: " + exception.getMessage());
 
         }
-
-    }
-
-    public List<Funcionario> listarTodos() {
-
-        String sql = "SELECT * FROM funcionario";
-        List<Funcionario> funcionarios = new ArrayList<>();
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            ResultSet resultSet = stmt.executeQuery();
-
-            while (resultSet.next()) {
-                Funcionario funcionario = new Funcionario(
-                        (UUID) resultSet.getObject("id_funcionario"),
-                        resultSet.getString("nome"),
-                        resultSet.getString("cpf"),
-                        LocalDate.parse(resultSet.getDate("data_nasc").toString()),
-                        resultSet.getDouble("salario_bruto")
-                );
-
-                funcionarios.add(funcionario);
-            }
-
-        } catch (SQLException exception) {
-            System.out.println("Houve um erro ao consultar os funcionários no banco de dados: " + exception.getMessage());
-        }
-        return funcionarios;
     }
 }
