@@ -1,6 +1,6 @@
 # 💼 Sistema de Folha de Pagamento — SERRATEC POO
 
-> Sistema desenvolvido em Java para calcular o **salário líquido** de funcionários, aplicando descontos de **INSS** e **Imposto de Renda (IR)** conforme as tabelas vigentes de 2025. Os dados são lidos de um arquivo CSV de entrada e os resultados são exportados em um CSV de saída, com persistência em banco de dados.
+> Sistema desenvolvido em Java para calcular o **salário líquido** de funcionários, aplicando descontos de **INSS** e **Imposto de Renda (IR)** conforme as tabelas. Os dados são lidos de um arquivo CSV de entrada e os resultados são exportados em um CSV de saída, com persistência em banco de dados.
 
 ---
 
