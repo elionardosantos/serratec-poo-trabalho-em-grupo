@@ -30,7 +30,7 @@ public class FuncionarioDAO {
             stmt.setDate(4, Date.valueOf(funcionario.getDataNascimento()));
             stmt.setDouble(5, funcionario.getSalarioBruto());
             stmt.execute();
-            System.out.println("Funcionário cadastrado no banco de dados com sucesso");
+            System.out.println("Funcionário "+funcionario.getNome()+" cadastrado no banco de dados com sucesso");
 
         } catch (SQLException exception) {
             System.out.println("Erro ao cadastrar funcionário no banco de dados: " + exception.getMessage());

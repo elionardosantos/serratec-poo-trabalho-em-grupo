@@ -33,7 +33,7 @@ public class DependenteDAO {
             stmt.setString(5, dependente.getParentesco());
             stmt.setObject(6, dependente.getIdFuncionario());
             stmt.execute();
-            System.out.println("Dependente cadastrado no banco de dados com sucesso");
+            System.out.println("Dependente "+dependente.getNome()+" cadastrado no banco de dados com sucesso");
         } catch (SQLException exception) {
             System.out.println("Erro ao cadastrar dependente no banco de dados: " + exception.getMessage());
         }
