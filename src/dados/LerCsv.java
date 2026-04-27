@@ -1,10 +1,10 @@
-package Dados;
+package dados;
 
-import DAO.ConnectionFactory;
-import DAO.DependenteDAO;
-import DAO.FuncionarioDAO;
-import Entity.Dependente;
-import Entity.Funcionario;
+import dao.ConnectionFactory;
+import dao.DependenteDAO;
+import dao.FuncionarioDAO;
+import entity.Dependente;
+import entity.Funcionario;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -82,9 +82,9 @@ public class LerCsv {
 
             if (!funcionarios.isEmpty()) {
                 ConnectionFactory factory = new ConnectionFactory(
-                        "jdbc:postgresql://localhost:5432/folhadepagamento",
+                        "jdbc:postgresql://localhost:5432/<nome_do_bd>",
                         "postgres",
-                        "1212"
+                        "<senha_do_bd>"
                 );
                 Connection connection = factory.getConnection();
                 FuncionarioDAO funcionarioDAO = new FuncionarioDAO(connection);

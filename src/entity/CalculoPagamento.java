@@ -1,6 +1,6 @@
-package Entity;
+package entity;
 
-import Interface.CalculoDesconto;
+import interfaces.CalculoDesconto;
 
 public class CalculoPagamento implements CalculoDesconto {
 

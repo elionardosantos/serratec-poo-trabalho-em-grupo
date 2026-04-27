@@ -1,7 +1,6 @@
-package DAO;
+package dao;
 
-import Entity.Dependente;
-import Entity.Funcionario;
+import entity.Dependente;
 
 import java.sql.*;
 import java.time.LocalDate;

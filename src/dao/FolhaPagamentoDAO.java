@@ -1,6 +1,6 @@
-package DAO;
+package dao;
 
-import Entity.FolhaPagamento;
+import entity.FolhaPagamento;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;

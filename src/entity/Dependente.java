@@ -1,6 +1,6 @@
-package Entity;
+package entity;
 
-import Exception.DependenteException;
+import exceptions.DependenteException;
 import java.time.LocalDate;
 import java.util.UUID;
 

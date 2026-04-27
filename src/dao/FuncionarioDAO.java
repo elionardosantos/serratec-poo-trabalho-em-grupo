@@ -1,12 +1,8 @@
-package DAO;
+package dao;
 
-import Entity.Funcionario;
+import entity.Funcionario;
 
 import java.sql.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 /**
  * Instanciar um objeto ConnectionFactory e obter a conexão através do método getConnection()

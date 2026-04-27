@@ -1,10 +1,10 @@
-import DAO.ConnectionFactory;
-import DAO.FolhaPagamentoDAO;
-import Dados.Arquivos;
-import Dados.EscreverCsv;
-import Dados.LerCsv;
-import Entity.FolhaPagamento;
-import Entity.Funcionario;
+import dao.ConnectionFactory;
+import dao.FolhaPagamentoDAO;
+import dados.Arquivos;
+import dados.EscreverCsv;
+import dados.LerCsv;
+import entity.FolhaPagamento;
+import entity.Funcionario;
 
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -16,15 +16,15 @@ public class Main {
     public static void main(String[] args) {
 
         ConnectionFactory factory = new ConnectionFactory(
-                "jdbc:postgresql://localhost:5432/folhadepagamento",
+                "jdbc:postgresql://localhost:5432/folha_pagamento",
                 "postgres",
-                "1212"
+                "admin"
         );
         Connection connection = factory.getConnection();
         FolhaPagamentoDAO folhaPagamentoDAO = new FolhaPagamentoDAO(connection);
 
         Scanner sc = new Scanner(System.in);
-        String caminho = System.getProperty("user.dir") + "/src/CSV";
+        String caminho = System.getProperty("user.dir") + "/src/csv";
         String arquivoEntrada;
         List<Funcionario> funcionarios = null;
 
@@ -77,7 +77,7 @@ public class Main {
         System.out.print("\nDigite um nome para o arquivo de saída:\n-> ");
         String nomeArquivoSaida = sc.nextLine();
 
-        String arquivoSaida = System.getProperty("user.dir") + "/src/CSV/"+nomeArquivoSaida+"_saida.csv";
+        String arquivoSaida = System.getProperty("user.dir") + "/src/csv/"+nomeArquivoSaida+"_saida.csv";
         EscreverCsv escrever = new EscreverCsv(arquivoSaida);
         escrever.escreverDados(folhas);
 

@@ -1,6 +1,6 @@
-package Dados;
+package dados;
 
-import Entity.FolhaPagamento;
+import entity.FolhaPagamento;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
